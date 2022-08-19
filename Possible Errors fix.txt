@@ -171,9 +171,9 @@ To power the receiver connect the battery connection of the receiver to the +5V 
 
 
 16 - Can I use this transmitter
-The YMFC-AL software is designed to work with any transmitter / receiver that supports a 1520us center pulse. You can find this information in the manual of the transmitter.
+The software is designed to work with any transmitter / receiver that supports a 1520us center pulse. You can find this information in the manual of the transmitter.
 
-This means that almost every transmitter will work fine with the YMFC-AL software. For example: 1 x Flysky FS-T6 6-CH TX Transmitter
+This means that almost every transmitter will work fine with the software. For example: 1 x Flysky FS-T6 6-CH TX Transmitter
 
 
 
