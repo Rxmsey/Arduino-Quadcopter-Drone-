@@ -37,7 +37,7 @@ There are a couple of reasons for that.
 
 
 08 - What hardware is needed for this project
-I made the following hardware list for your convenience. This list is a suggestion and it's your own responsibility to ensure that the products meet your specific requirements. But this list should be sufficient to build the YMFC-AL quadcopter.
+I made the following hardware list for your convenience. This list is a suggestion and it's your own responsibility to ensure that the products meet your specific requirements. But this list should be sufficient to build the quadcopter.
 
 1 x 450 size frame with integrated power distribution board
 4 x 100kV motor / 10x4.5 props / ESC combo
