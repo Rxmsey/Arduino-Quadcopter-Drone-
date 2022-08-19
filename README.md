@@ -11,7 +11,7 @@ The code is well commented and clearly explained
 
 2. Download [Arduino IDE](https://downloads.arduino.cc/arduino-nightly-windows.zip)
 
-2. Read the explanation within the Building step by step.txt file
+2. Read the explanation within the [Building step by step.txt](https://github.com/Rxmsey/Arduino-Quadcopter-Drone-/blob/main/Building%20step%20by%20step.txt) file
  
 
 Terms of use
