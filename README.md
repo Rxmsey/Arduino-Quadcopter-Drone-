@@ -7,14 +7,12 @@ The purpose of it is to provide a simple and understandable code that is needed 
 
 The code is well commented and clearly explained
 
-```
-1. Dowload This Project
+1. Dowload This [Project](https://codeload.github.com/Rxmsey/Arduino-Quadcopter-Drone-/zip/refs/heads/main)
 
 2. Download [Arduino IDE](https://downloads.arduino.cc/arduino-nightly-windows.zip)
 
 2. Read the explanation within the Building step by step.txt file
  
-```
 
 Terms of use
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
