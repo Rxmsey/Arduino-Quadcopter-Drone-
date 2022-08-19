@@ -2,6 +2,7 @@ This is an auto-leveling **Arduino Uno based quadcopter drone** that is easy to 
 
 The total cost to build a quadcopter like this is approximately $150 if you use the hardware list below. This includes a battery, transmitter, charger, etc.
 
+![Drone](auto-levelling-quadcopter-with-arduino.jpg)
 
 The purpose of it is to provide a simple and understandable code that is needed to build an Arduino based auto-level quadcopter flight controller.
 
