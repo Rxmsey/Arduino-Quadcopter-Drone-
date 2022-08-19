@@ -24,7 +24,9 @@ The code is well commented and clearly explained
 
 
 
-`1. Dowload This Project`
-`2. Download [Arduino IDE] (https://downloads.arduino.cc/arduino-nightly-windows.zip)`
-`2. Read the explanation within the Building step by step.txt file`
+1. Dowload This Project
+
+2. Download [Arduino IDE] (https://downloads.arduino.cc/arduino-nightly-windows.zip)
+
+2. Read the explanation within the Building step by step.txt file
  
