@@ -1,0 +1,229 @@
+01 - How do I calibrate the accelerometer
+Under normal conditions it's not necessary to calibrate the accelerometer. If the quadcopter is drifting to one side you can use the subtrims on the transmitter to level the quadcopter.
+
+
+02 - Errors during the setup procedure
+During setup it might happen that an error accurse. Below you can find detailed information about the possible errors.
+
+
+---
+
+
+04 - Can I use the Arduino Due, Mega2560 or Pro Mini
+Using the Arduino Pro mini is not a problem. This board is loaded with the same processor as the Arduino Uno and will work fine. Please note that the power supply of the Pro Mini might not be sufficient to power the receiver.
+
+Using another Arduino like the Arduino Due or Mega2560 is possible but not recommended for beginners. To get it to work you need to modify the code because other controllers use other interrupt registers and i/o pins. The data sheet of the specific microcontroller might be a good starting point.
+
+I cannot help you with this because I don't own all the Arduino boards on the market.
+
+
+05 - Does the gyro needs to be connected to A4/A5 or SDA/SCL
+On the Arduino Uno the A4 and A5 pins are connected to the SDA and SCL respectively. So it does not matter if you use the A4 / A5 pins or the SDA / SCL pins
+
+
+06 - Are my PID values correct?
+PID values are hardware specific. So every quadcopter needs its own set of PID values.
+
+
+07 - Why didn't you use the pulse width modulation (PWM) output's
+There are a couple of reasons for that.
+
+1) I like to keep the project as simple as possible.
+
+2) The Arduino IDE configures the PWM frequency @ 500Hz. Not all esc's can handle this. This means that you need to lower the frequency by manipulating the ATmega register. As said before, I like to keep it as simple as possible.
+
+3) 500Hz means you cannot create a 2000us pulse. This means losing precision.
+
+
+
+08 - What hardware is needed for this project
+I made the following hardware list for your convenience. This list is a suggestion and it's your own responsibility to ensure that the products meet your specific requirements. But this list should be sufficient to build the YMFC-AL quadcopter.
+
+1 x 450 size frame with integrated power distribution board
+4 x 100kV motor / 10x4.5 props / ESC combo
+1 x 3S / 2200mAh / 30C lipo
+1 x Arduino Uno or Funduino Uno
+1 x MPU-6050 gyro / accelerometer
+1 x Flysky FS-T6 6-CH TX Transmitter
+1 x 2S/3S lipo battery charger
+And some small parts like three resistors (1.5kΩ & 1kΩ & 330Ω), a 1A diode (1N4001 or similar), LED, some wire, a connector for the flight battery, etc.
+
+
+
+09 - The LED: normal behavior and error indication
+At startup the LED turns on solid for 5 seconds. After that the LED starts to blink fast (8Hz) to indicate the gyro calibration procedure. When the gyro is calibrated the LED normally turns off.
+
+If the LED blinks slowly (1Hz) after the calibration the throttle is not in the lowest position or the transmitter is still off.
+
+When the LED stay's on all the time after calibration the setup software is not executed correctly. The LED also stay’s on when the registers of the gyro are not set correctly that can be caused by a faulty I2C bus communication.
+
+During flight the LED is off all the time. If the LED turns on during flight the battery is getting low and you should land the quadcopter.
+
+Another possibility is that the program loop time is exceed. This is possible when you modified the code and the loop time gets too long. When the loop time is to long the angle calculations are unreliable and can cause quadcopter instability.
+
+
+
+10 - Motors slow down / speed up when my quad is on the ground
+This is normal. After starting the quadcopter the PID controllers and the IMU directly start to work. This means that the quadcopter tries to level itself directly after the start.
+
+When the quadcopter is started at a (slight) tilted surface the rpm of the lower motors will increase and the rpm of the higher motors will decrease.
+
+Always take off directly after you start the quadcopter.
+
+If your motors run different direct on startup the ESC’s are not calibrated correctly and you need to recalibrate all the ESC’s with the ESC calibration sketch.
+
+After calibration use the ESC calibration program and send a 5 as described in the video to check if the motors run at the same speed when the throttle is increased. https://youtu.be/DYpHB-LfloI?t=16m13s
+
+If you motors act violent please check question 15 below
+
+
+11 - My quadcopter drifts a little when I release the sticks
+You can use the subtrims on your transmitter to level the YMFC-AL quadcopter.
+
+Please understand that an auto-level feature is not the same as position hold. The quadcopter will always drift due to wind, turbulence, etc. No matter how level the quadcopter is.
+
+
+
+
+12 - I fly with a 4 cell lipo instead of a 3 cell
+The YMFC-AL schematic and software are designed for a 3 cell flight battery (lipo). This type of battery has a maximum output voltage of 12.6V when fully charged.
+
+The diode D1 prevents the USB power from going to the ESC's and motors. When powered by a lipo the voltage drop caused by the diode is approximately 0.6V.
+
+The voltage divider (R2 and R3 on the schematic) lower the voltage for the analog input. This analog input can handle a maximum input voltage of 5V.
+
+((12.6V - 0.6V) / (1000Ω + 1500Ω)) * 1000Ω = 4.8V
+
+If you connect a 4 cell lipo with a maximum voltage of 16.8V the voltage on the analog port of the Adruino will exceed the 5V and can damage the Arduino.
+
+To prevent this you need to change the resistors of the divider.
+
+R3 was 1500Ω and needs to be 8200Ω
+R2 was 1000Ω and needs to be 3300Ω
+
+((16.8V - 0.6V) / (3300Ω + 8200Ω)) * 3300Ω = 4.65V
+ 
+In the flight controller source code the following lines need to be changed:
+
+
+battery_voltage = (analogRead(0) + 65) * 1.2317;
+needs to be changed in:
+battery_voltage = (analogRead(0) + 49) * 1.7038;
+
+battery_voltage = battery_voltage * 0.92 + (analogRead(0) + 65) * 0.09853;
+needs to be changed in:
+battery_voltage = battery_voltage * 0.92 + (analogRead(0) + 49) * 0.1363;
+
+if(battery_voltage < 1030 && battery_voltage > 600)digitalWrite(12, HIGH);
+needs to be changed in:
+if(battery_voltage < 1370 && battery_voltage > 600)digitalWrite(12, HIGH);
+
+if (battery_voltage < 1240 && battery_voltage > 800){
+  esc_1 += esc_1 * ((1240 - battery_voltage)/(float)3500);
+  esc_2 += esc_2 * ((1240 - battery_voltage)/(float)3500);
+  esc_3 += esc_3 * ((1240 - battery_voltage)/(float)3500);
+  esc_4 += esc_4 * ((1240 - battery_voltage)/(float)3500);
+}
+needs to be changed in:
+
+if (battery_voltage < 1650 && battery_voltage > 1000){
+  esc_1 += esc_1 * ((1650 - battery_voltage)/(float)2500);
+  esc_2 += esc_2 * ((1650 - battery_voltage)/(float)2500);
+  esc_3 += esc_3 * ((1650 - battery_voltage)/(float)2500);
+  esc_4 += esc_4 * ((1650 - battery_voltage)/(float)2500);
+}
+
+
+
+
+
+13 - How do I connect the ESC's correctly to the Arduino
+On the schematic only the ground and the signal wire are connected. This is correct. The +5V from the ESC is not connected because the Arduino gets its power directly from the flight battery via the diode D1.
+
+In some cases the ground or - doesn't have to be connected like I did in my video. Check with a multimeter if the ground of the battery connection is connected to the ground / - of the esc connection wire. If these are connected the ground of the ESC does not need to be connected to the Arduino because they share the same battery ground.
+
+The signal wire of the ESC's are connected to the digital outputs 4, 5, 6 and 7 as shown in the table below.
+
+Arduino  	Location	Direction of rotation
+D4	right front  	counter clockwise
+D5	right rear	clockwise
+D6	left rear	counter clockwise
+D7	left front	clockwise
+
+
+
+14 - How do I connect my receiver
+The receiver should at least have four channels:
+- Roll or Aileron
+- Pitch or Elevator
+- Throttle
+- Yaw
+
+The signal output pins should be connected to digital inputs 8, 9, 10 and 11 of the Arduino as shown on the schematic. Check the manual of the receiver to check witch are the signal pins of the receiver.
+
+To power the receiver connect the battery connection of the receiver to the +5V and ground of the Arduino as shown in the schematic.
+
+
+
+
+---
+
+
+
+16 - Can I use this transmitter
+The YMFC-AL software is designed to work with any transmitter / receiver that supports a 1520us center pulse. You can find this information in the manual of the transmitter.
+
+This means that almost every transmitter will work fine with the YMFC-AL software. For example: 1 x Flysky FS-T6 6-CH TX Transmitter
+
+
+
+17 - How to change the maximum angle of the quadcopter
+In the original code the maximum angle is set to approximately 33 degrees. The angle is calculated as follows:
+
+500 - 8 / 15 = 32.8 degrees
+
+Where:
+500 = standardized stick travel value
+8 = deadband
+15 = original angle setting
+To change the maximum angle you need to change the value 15 in the following lines:
+
+pitch_level_adjust = angle_pitch * 15;
+roll_level_adjust = angle_roll * 15;
+
+13 = 37 degrees
+14 = 35 degrees
+15 = 33 degrees
+16 = 31 degrees
+17 = 29 degrees
+18 = 27 degrees
+Adjust the maximum angle with small steps to see if the quadcopter keeps performing normal.
+
+
+
+18 - Setup stops at "Gently move all the sticks ... their extends"
+If the setup program stops after the text "Gently move all the sticks simultaneously to their extends" you are probable using the newer Arduino IDE (1.6.x).
+
+The program stops because the newer Arduino IDE optimizes the code. Therefore some values need to be declared as volatile.
+
+In the declaration part you need to change the beginning of line 27 from:
+int receiver_input_channel_1.......
+
+to:
+volatile int receiver_input_channel_1......
+
+
+
+
+19 - Setup ESC calibration program stops after sending a character
+This problem is fixed from version 1.4 So always download the latest version from my website.
+
+If the program only shows one line after sending a character or number you need to find the following line in the code:
+
+data = Serial.read(); //Read the incomming byte.
+
+And change it to:
+
+data = Serial.read(); //Read the incomming byte.
+delay(100);
+while(Serial.available() > 0)loop_counter = Serial.read();

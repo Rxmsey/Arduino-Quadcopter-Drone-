@@ -1,0 +1,41 @@
+Here's a list for the parts with links to sites where they're being sold for very cheap prices:
+
+1 x 450 size frame with integrated power distribution board
+
+https://www.dx.com/p/replacement-pu-quadcopter-frame-airframe-kit-for-450-500-red-beige-multi-color-2056562.html#.YwACai5Bzb0
+
+
+4 x 1000kV motor / 10x4.5 props / ESC combo
+
+https://www.dx.com/p/a2212-1000kv-brushless-motor-w-30a-brushless-esc-1045-propeller-dji-f450-550-2060813.html#.YwACmy5Bzb0
+
+
+1 x 3S / 2200mAh / 20C lipo
+
+https://nl.banggood.com/ZOP-Power-11_1V-2200mAh-3S-20C-Lipo-Battery-XT60-Plug-for-Eachine-Wizard-X220-FPV-Racing-RC-Drone-p-999253.html?p=XR290421218446201804&custlinkid=2006104&cur_warehouse=CN
+
+
+1 x Arduino Uno or Funduino Uno
+
+
+http://www.dx.com/p/funduino-uno-r3-atmega328-development-board-for-arduino-384207?Utm_rid=78761898&Utm_source=affiliate
+
+
+1 x MPU-6050 gyro / accelerometer
+
+https://www.dx.com/p/mma8452-3-axis-accelerometer-and-mpu6050-6-axis-gyro-sensor-module-2069653.html?Utm_rid=78761898&Utm_source=affiliate
+
+
+1 x Flysky FS-i6 6-CH TX Transmitter
+
+https://www.banggood.com/nl/FlySky-FS-i6-2_4G-6CH-AFHDS-RC-Radio-Transmitter-With-FS-iA6B-Receiver-for-RC-FPV-Drone-Engineering-Vehicle-Boat-Robot-p-983537.html?cur_warehouse=CN&ID=42482&rmmds=search&p=XR290421218446201804&custlinkid=2006028
+
+
+1 x 2S/3S lipo battery charger
+
+
+https://nl.banggood.com/IMaxRC-IMax-B3-Pro-1_5A-Balance-Compact-Charger-for-2S-3S-Lipo-Battery-p-1223206.html?cur_warehouse=CN&rmmds=search&p=XR290421218446201804&custlinkid=2006103
+
+
+
+
