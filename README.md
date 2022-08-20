@@ -63,11 +63,10 @@ I personally prefer (and use) 8x4.5 inch props instead of the 10x4.5 inch props.
 
 
 
-<h4> Step 3 - The build: <h4>
+<h4> Step 3 - The build: <h4> 
  
-checkout the `schematic.png` picture to find out how to connect the parts its very simple so don't worry 
- 
- ![schematic](schematic .png)
+ schematic connection
+ ![schematic](schematic.png)
 
 <h6> 3.1 MPU-6050 gyro/accelerometer:<h6>
  
