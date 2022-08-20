@@ -66,6 +66,8 @@ I personally prefer (and use) 8x4.5 inch props instead of the 10x4.5 inch props.
 <h4> Step 3 - The build: <h4>
  
 checkout the `schematic .png` picture to find out how to connect the parts its very simple so don't worry 
+ 
+ ![schematic](schematic.png)
 
 <h6> 3.1 MPU-6050 gyro/accelerometer:<h6>
  
@@ -94,11 +96,11 @@ In some cases the ground of the ESC doesn't have to be connected. Check with a m
 
 The signal wire of the ESC's are connected to the digital outputs 4, 5, 6 and 7 of the Arduino as shown in the table below. Also check the direction of rotation.
 
-Arduino  	Location    	Direction of rotation
+`Arduino  	Location    	Direction of rotation
 D4	right front  	counter clockwise
 D5	right rear	clockwise
 D6	left rear	counter clockwise
-D7	left front	clockwise
+D7	left front	clockwise`
 
 
 
