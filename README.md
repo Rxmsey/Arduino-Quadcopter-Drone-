@@ -18,9 +18,6 @@ The code is well commented and clearly explained
 
 3. Read the explanation within the [Building step by step.txt](https://github.com/Rxmsey/Arduino-Quadcopter-Drone-/blob/main/Building%20step%20by%20step.txt) file
 
-![Schem](schematic.png)
- 
-
 <h1> Terms of use </h1>
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
