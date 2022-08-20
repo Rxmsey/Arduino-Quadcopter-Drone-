@@ -30,8 +30,8 @@ THE SOFTWARE.
 
 <h1> Safety note </h1>
 
-Always remove the propellers and stay away from the motors unless you 
-are 100% certain of what you are doing.
+Always remove the propellers and stay away from the motors when you're working on the software unless you 
+are 100% certain of what you are doing or finished setting up.
 
 
 
