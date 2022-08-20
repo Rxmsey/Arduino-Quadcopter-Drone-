@@ -11,6 +11,7 @@ The purpose of it is to provide a simple and understandable code that is needed 
 The code is well commented and clearly explained
 
 <h1> Steps </h1>
+
 1. Dowload This [Project](https://codeload.github.com/Rxmsey/Arduino-Quadcopter-Drone-/zip/refs/heads/main)
 
 2. Download [Arduino IDE](https://downloads.arduino.cc/arduino-nightly-windows.zip)
