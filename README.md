@@ -1,6 +1,6 @@
 <h1> What is this project? </h1>
 
-### This is an auto-leveling **Arduino Uno based quadcopter drone** that is easy to build and fun to fly. Auto leveling means that, when you release the sticks the quadcopter levels itself.
+#### This is an auto-leveling **Arduino Uno based quadcopter drone** that is easy to build and fun to fly. Auto leveling means that, when you release the sticks the quadcopter levels itself.
 
 The total cost to build a quadcopter like this is approximately $150 if you use the hardware list below. This includes a battery, transmitter, charger, etc.
 
